@@ -1,0 +1,71 @@
+@layout('layouts.app')
+
+@section('content')
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/contact-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>New Post</h1>
+            <span class="subheading">Have something to write about?</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form action="/posts/store" method="POST" encType="multipart/form-data">
+          <div class="control-group">
+            <div class="form group floating-label-form-group controls">
+              <labeL>Title</labeL>
+              <input type="text" name="title" placeholder="Title..." class="form-control">
+            </div>
+          </div>
+          <div class="control-group">
+              <div class="form group floating-label-form-group controls">
+                <labeL>Summary</labeL>
+                <input type="text" name="summary" placeholder="Summary..." class="form-control">
+              </div>
+            </div>
+          <div class="control-group">
+            <div class="form group floating-label-form-group controls">
+              <labeL>Main Content</labeL>
+              <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="form-group mt-5">
+            <input type="file" name="image" clasee="form-control-file">
+          </div>
+          <div class="form-group text-center">
+            <button class="btn my-4 btn-primary">Create Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+@endsection
+
+@section('styles')
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+
+@endsection
+
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+<script>
+$('#content').summernote({
+  placeholder: 'You awesome content...',
+  tabsize: 1,
+  minHeight: 200,
+  maxHeight: 500
+});
+</script>
+@endsection

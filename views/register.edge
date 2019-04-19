@@ -1,0 +1,63 @@
+@layout('layouts.app')
+
+@section('content')
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Register</h1>
+            <span class="subheading">Register an account to start creating content</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        @if(errors.length > 0)
+          <ul class="list-group">
+            @each(error in errors)
+              <li class="list-group-item text-danger">{{ error }}</li>
+            @endeach
+          </ul>
+        @endif
+        <form action="/users/register" method="POST" enctype="multipart/form-data">
+          <div class="control-group">
+            <div class="form group floating-label-form-group controls">
+              <labeL>Username</labeL>
+              <input type="text" name="username" value="{{ data.username || '' }}" placeholder="Username..." class="form-control">
+            </div>
+          </div>
+          <div class="control-group">
+              <div class="form group floating-label-form-group controls">
+                <labeL>Bio</labeL>
+                <textarea name="bio" value="{{ data.bio || '' }}" placeholder="Short Bio..." id="" cols="30" rows="3" class="form-control"></textarea>
+              </div>
+            </div>
+          <div class="control-group">
+            <div class="form group floating-label-form-group controls">
+              <labeL>Email</labeL>
+              <input type="email" name="email" value="{{ data.email || '' }}" placeholder="Email Address..." class="form-control">
+            </div>
+          </div>
+          <div class="control-group">
+              <div class="form group floating-label-form-group controls">
+                <labeL>Password</labeL>
+                <input type="password" name="password" placeholder="Password..." class="form-control">
+              </div>
+            </div>
+          <div class="form-group text-center">
+            <button class="btn my-4 btn-primary">Register Now</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+@endsection
